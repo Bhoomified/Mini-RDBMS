@@ -1,0 +1,12 @@
+[project]
+name = "mini-rdbms"
+version = "0.1.0"
+description = "A lightweight RDBMS engine with query processing and transaction support"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+#This records our project metadata and test discovery conventions. We are not installing any third-party runtime dependencies.

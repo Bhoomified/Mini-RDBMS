@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Python testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# macOS
+.DS_Store
+
+# Runtime database files
+data/
+demo_data/
+
+# Temporary and backup files
+*.tmp
+*.bak
+
+# Editor settings
+.vscode/
+.idea/

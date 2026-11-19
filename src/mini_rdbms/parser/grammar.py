@@ -1,0 +1,30 @@
+"""Grammar implemented by parser.py."""
+
+GRAMMAR = r"""
+statement       = create-table | create-index | insert | select | update
+                | delete | begin | commit | rollback | explain ;
+create-table    = "CREATE", "TABLE", identifier, "(", column-definition,
+                  { ",", column-definition }, ")" ;
+column-definition = identifier, type-name, [ "NOT", "NULL" ],
+                    [ "PRIMARY", "KEY" ] ;
+create-index    = "CREATE", "INDEX", identifier, "ON", identifier, "(",
+                  identifier, ")", [ "USING", index-type ] ;
+insert          = "INSERT", "INTO", identifier, [ "(", identifier,
+                  { ",", identifier }, ")" ], "VALUES", value-tuple,
+                  { ",", value-tuple } ;
+select          = "SELECT", ( "*" | identifier, { ",", identifier } ),
+                  "FROM", identifier, [ where ] ;
+update          = "UPDATE", identifier, "SET", assignment,
+                  { ",", assignment }, [ where ] ;
+delete          = "DELETE", "FROM", identifier, [ where ] ;
+where           = "WHERE", condition, { "AND", condition } ;
+condition       = identifier, comparison-operator, value ;
+assignment      = identifier, "=", value ;
+value-tuple     = "(", value, { ",", value }, ")" ;
+value           = integer | float | string | "NULL" | "TRUE" | "FALSE" ;
+type-name       = "INT" | "INTEGER" | "FLOAT" | "REAL" | "TEXT"
+                | "BOOL" | "BOOLEAN" ;
+index-type      = "HASH" | "BTREE" ;
+comparison-operator = "=" | "!=" | "<>" | "<" | "<=" | ">" | ">=" ;
+identifier      = ? lexical identifier ? ;
+"""

@@ -1,12 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "mini-rdbms"
+name = "mini-rdbms-rebuild"
 version = "0.1.0"
-description = "A lightweight RDBMS engine with query processing and transaction support"
+description = "Educational mini relational database management system"
 requires-python = ">=3.10"
 dependencies = []
 
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py"]
+[project.scripts]
+minirdb = "mini_rdbms.main:main"
+minirdb-web = "mini_rdbms.web:serve"
 
-#This records our project metadata and test discovery conventions. We are not installing any third-party runtime dependencies.
+[tool.setuptools.packages.find]
+where = ["src"]
